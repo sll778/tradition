@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="tradition"
+  id="myeclipse.1453612467610"
+  context-root="/tradition"
+  j2ee-spec="5.0"
+  archive="tradition.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
