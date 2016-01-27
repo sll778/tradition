@@ -23,6 +23,7 @@ public class deleteServlet extends HttpServlet {
 	 * @throws IOException if an error occurred
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		Long customId = Long.parseLong(request.getParameter("customId"));
 		Custom custom = new Custom();
 		custom.delete(customId);

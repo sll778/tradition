@@ -24,7 +24,7 @@ public class beforeAddServlet extends HttpServlet {
 	 * @throws IOException if an error occurred
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.setCharacterEncoding("utf-8");
 		//得到所有的类别
 		CustomKind customKind = new CustomKind();
 		ArrayList<CustomKind> customKinds = customKind.getAllKind();

@@ -50,4 +50,22 @@ public class CustomKind {
 			
 	}
 	
+	public CustomKind getById(Long id){
+		DbConn dbc = new DbConn();
+		conn = dbc.getConn();
+		CustomKind customKind = new CustomKind();
+		
+		try {
+			pre = conn.prepareStatement("select * from custom_kind where id=" + id);
+			res = pre.executeQuery();
+			while(res.next()){
+				customKind.setId(res.getLong(1));
+				customKind.setName(res.getString(2));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return customKind;
+	}
+	
 }

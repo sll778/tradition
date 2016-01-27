@@ -90,6 +90,7 @@ public class Custom {
 		return custom;
 	}
 	
+	//搜索功能
 	public ArrayList<Custom> search(String keyword){
 		ArrayList<Custom> customs = new ArrayList();
 		DbConn dbc = new DbConn();
@@ -112,6 +113,20 @@ public class Custom {
 		}
 		return customs;
 	}
+	
+	//对习俗编辑信息的更新
+	public void update(String name,String content,Long kindId,Long id){
+		DbConn dbc = new DbConn();
+		conn = dbc.getConn();
+		Custom custom = new Custom();
+		try {
+			pre = conn.prepareStatement("update custom set name='"+ name +"',content='"+ content +"',kindId="+ kindId +" where id="+id);
+			pre.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 	public void closeAll(){
 		

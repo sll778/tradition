@@ -24,7 +24,7 @@ public class webLoginServlet extends HttpServlet {
 	 * @throws IOException if an error occurred
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		request.setCharacterEncoding("utf-8");
 		String logname = request.getParameter("logname");
 		String password = request.getParameter("password");
 		

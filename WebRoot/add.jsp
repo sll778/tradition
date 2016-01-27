@@ -26,6 +26,7 @@ ArrayList<CustomKind> customKinds = (ArrayList<CustomKind>)request.getAttribute(
   </head>
   
   <body>
+  	<div style="background-color:#cf9e9e;width:100%;height:35px"><a href="main.jsp">习俗网后台系统</a>&nbsp;<a href="customServlet">传统习俗</a></div>
     <form action="addServlet" method="post">  
     	习俗名称：<input type="text" name="name"/>
     	习俗类别：<select name="customKind">

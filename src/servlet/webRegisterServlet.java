@@ -23,7 +23,7 @@ public class webRegisterServlet extends HttpServlet {
 	 * @throws IOException if an error occurred
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.setCharacterEncoding("utf-8");
 		String logname = request.getParameter("logname");
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");

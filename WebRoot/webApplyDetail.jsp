@@ -26,6 +26,7 @@ String customId = request.getAttribute("customId").toString();
   </head>
   
   <body>
+  <div><a href="">习俗网</a>&nbsp;<a href="webCustomServlet">传统习俗</a>&nbsp;<a href="webLogin.jsp">登录</a>&nbsp;<a href="webRegister.jsp">注册</a></div> 
   <form action="webApplySaveServlet" method="post">
   	<input type="hidden" value=<%=customId%> name="customId"/>
     申请修改的信息：<input type="text" name="fixContent" />

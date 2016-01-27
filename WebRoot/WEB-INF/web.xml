@@ -82,6 +82,27 @@
     <servlet-name>webApplySaveServlet</servlet-name>
     <servlet-class>servlet.webApplySaveServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>userManageServlet</servlet-name>
+    <servlet-class>servlet.userManageServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>editServlet</servlet-name>
+    <servlet-class>servlet.editServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>editUpdateServlet</servlet-name>
+    <servlet-class>servlet.editUpdateServlet</servlet-class>
+  </servlet>
+
+
+
 
 
 
@@ -146,6 +167,18 @@
   <servlet-mapping>
     <servlet-name>webApplySaveServlet</servlet-name>
     <url-pattern>/webApplySaveServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>userManageServlet</servlet-name>
+    <url-pattern>/userManageServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>editServlet</servlet-name>
+    <url-pattern>/editServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>editUpdateServlet</servlet-name>
+    <url-pattern>/editUpdateServlet</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

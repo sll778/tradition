@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Custom;
+import bean.CustomKind;
 
-public class searchServlet extends HttpServlet {
+public class editServlet extends HttpServlet {
 
 	/**
 	 * The doGet method of the servlet. <br>
@@ -25,16 +26,17 @@ public class searchServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		//得到关键词
-		String keyword = request.getParameter("keyword");
 		
-		//搜索是否存在
+		//可跳转到编辑界面
+		Long customId = Long.parseLong(request.getParameter("customId"));
 		Custom custom = new Custom();
-		ArrayList<Custom> customs = new ArrayList();
-		customs = custom.search(keyword);
-		//跳转到界面
-		request.setAttribute("customs", customs);
-		request.getRequestDispatcher("webCustomServlet").forward(request, response);
+		custom = custom.view(customId);
+		CustomKind customKind = new CustomKind();
+		ArrayList<CustomKind> customKinds = customKind.getAllKind();
+		
+		request.setAttribute("customKinds", customKinds);
+		request.setAttribute("custom", custom);
+		request.getRequestDispatcher("edit.jsp").forward(request, response);
 		
 	}
 

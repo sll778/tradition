@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.Custom;
 
-public class searchServlet extends HttpServlet {
+public class editUpdateServlet extends HttpServlet {
 
 	/**
 	 * The doGet method of the servlet. <br>
@@ -25,16 +24,15 @@ public class searchServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		//得到关键词
-		String keyword = request.getParameter("keyword");
+		Long id = Long.parseLong(request.getParameter("id"));
+		String name = request.getParameter("name");
+		String content = request.getParameter("content");
+		Long customKind = Long.parseLong(request.getParameter("customKind"));
 		
-		//搜索是否存在
+		//编辑信息
 		Custom custom = new Custom();
-		ArrayList<Custom> customs = new ArrayList();
-		customs = custom.search(keyword);
-		//跳转到界面
-		request.setAttribute("customs", customs);
-		request.getRequestDispatcher("webCustomServlet").forward(request, response);
+		custom.update(name, content, customKind, id);
+		response.sendRedirect("customServlet");
 		
 	}
 

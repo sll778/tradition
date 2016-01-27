@@ -23,7 +23,8 @@ public class addServlet extends HttpServlet {
 	 * @throws IOException if an error occurred
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		request.setCharacterEncoding("utf-8");
+		//保存增加信息
 		String name = request.getParameter("name");
 		String content = request.getParameter("content");
 		Long customKind = Long.parseLong(request.getParameter("customKind"));

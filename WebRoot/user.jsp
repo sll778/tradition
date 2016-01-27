@@ -3,7 +3,8 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
-Custom custom = (Custom)request.getAttribute("custom");
+ArrayList<User> users = (ArrayList<User>)request.getAttribute("users");
+
 
 %>
 
@@ -12,7 +13,7 @@ Custom custom = (Custom)request.getAttribute("custom");
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'webCustomDetail.jsp' starting page</title>
+    <title>My JSP 'user.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -26,9 +27,19 @@ Custom custom = (Custom)request.getAttribute("custom");
   </head>
   
   <body>
-  <div><a href="">习俗网</a>&nbsp;<a href="webCustomServlet">传统习俗</a>&nbsp;<a href="webLogin.jsp">登录</a>&nbsp;<a href="webRegister.jsp">注册</a></div> 
-  <div><p>习俗名称：<%=custom.getName() %> </p></div>
-  <div><p>习俗内容：<%=custom.getContent() %></p></div>
-  <div><a href="webApplyServlet?customId=<%=custom.getId() %>">申请完善</a></div>
+    <div style="background-color:#cf9e9e;width:100%;height:35px"><a href="main.jsp">习俗网后台系统</a>&nbsp;<a href="customServlet">传统习俗</a>&nbsp;<a href="">会员管理</a></div>
+  	<div>
+  	<table width="100%" >
+  		<tr><td>登录名</td><td>姓名</td><td>邮箱</td><tr>
+	<%
+  		for(int i=0;i<users.size();i++){
+  			User user = users.get(i);
+  	 %>
+  	 	<tr><td><%= user.getLogname() %></td><td><%= user.getName() %></td><td><%= user.getEmail() %></td></tr>
+  	 <%
+  	 }
+  	  %>
+  	</table>
+  	</div>
   </body>
 </html>

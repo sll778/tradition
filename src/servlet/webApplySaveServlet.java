@@ -23,7 +23,7 @@ public class webApplySaveServlet extends HttpServlet {
 	 * @throws IOException if an error occurred
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.setCharacterEncoding("utf-8");
 		String fixContent = request.getParameter("fixContent");
 		Long customId = Long.parseLong(request.getParameter("customId"));
 		

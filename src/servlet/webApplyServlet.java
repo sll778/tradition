@@ -22,6 +22,7 @@ public class webApplyServlet extends HttpServlet {
 	 * @throws IOException if an error occurred
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		String customId = request.getParameter("customId");
 		//判断是否登录，如果已经登录，则可进入申请界面
 		HttpSession session = request.getSession();

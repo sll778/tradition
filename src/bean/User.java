@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class User {
 	private String logname;
@@ -53,6 +54,7 @@ public class User {
 		}
 	}
 	
+	//登录
 	public Boolean login(String logname,String password){
 		DbConn dbc = new DbConn();
 		conn = dbc.getConn();
@@ -73,5 +75,28 @@ public class User {
 		}
 		return flag;
 	}
+	
+	//会员列表
+	public ArrayList<User> getAllUser(){
+		ArrayList<User> users = new ArrayList();
+		DbConn dbc = new DbConn();
+		conn = dbc.getConn();
+		
+		try {
+			pre = conn.prepareStatement("select * from user");
+			res = pre.executeQuery();
+			while(res.next()){
+				User user = new User();
+				user.setLogname(res.getString(1));
+				user.setName(res.getString(2));
+				user.setEmail(res.getString(4));
+				users.add(user);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return users;
+	} 
+	
 	
 }

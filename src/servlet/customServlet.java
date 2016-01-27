@@ -24,6 +24,7 @@ public class customServlet extends HttpServlet {
 	 * @throws IOException if an error occurred
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		int pageNow = 1;
 		Custom custom = new Custom();
 		ArrayList<Custom> customs = custom.page(10, pageNow);
