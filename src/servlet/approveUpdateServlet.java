@@ -7,12 +7,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import bean.FixCustom;
-import bean.User;
+import bean.Message;
 
-public class webApplySaveServlet extends HttpServlet {
+public class approveUpdateServlet extends HttpServlet {
 
 	/**
 	 * The doGet method of the servlet. <br>
@@ -26,20 +25,24 @@ public class webApplySaveServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String fixContent = request.getParameter("fixContent");
-		Long customId = Long.parseLong(request.getParameter("customId"));
-		
-		//保存申请修改的信息
+		String flag = request.getParameter("flag");
+		Long fixId = Long.parseLong(request.getParameter("fixId"));
+		//根据fixId找到UserId
 		FixCustom fixCustom = new FixCustom();
-		HttpSession session = request.getSession();
-		String logname = (String)session.getAttribute("logname");
-		//根据logname查询id
-		User user = new User();
-		Long userId = user.getIdByLogname(logname);
+		Long userId = fixCustom.getUserIdById(fixId);
 		
-		fixCustom.addFixInfo(fixContent, customId, userId);
+		//审批
+		if(flag.equals("1")){
+			//将isPass置为1
+			fixCustom.applyPass(fixId);
+		}
+		//将status置为1
+		fixCustom.isApprove(fixId);
 		
-		response.sendRedirect("webCustomServlet");
+		//发送通知给会员
+		Message message = new Message();
+		message.add(userId, fixId);
+		response.sendRedirect("approveServlet");
 		
 	}
 

@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import bean.FixCustom;
+import bean.Message;
 import bean.User;
 
-public class webApplySaveServlet extends HttpServlet {
+public class webMessageServlet extends HttpServlet {
 
 	/**
 	 * The doGet method of the servlet. <br>
@@ -26,20 +27,16 @@ public class webApplySaveServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String fixContent = request.getParameter("fixContent");
-		Long customId = Long.parseLong(request.getParameter("customId"));
+		Message message = new Message();
 		
-		//保存申请修改的信息
-		FixCustom fixCustom = new FixCustom();
 		HttpSession session = request.getSession();
 		String logname = (String)session.getAttribute("logname");
-		//根据logname查询id
 		User user = new User();
 		Long userId = user.getIdByLogname(logname);
 		
-		fixCustom.addFixInfo(fixContent, customId, userId);
-		
-		response.sendRedirect("webCustomServlet");
+		ArrayList<Message> messages = message.getAllMessage(userId);
+		request.setAttribute("messages", messages);
+		request.getRequestDispatcher("message.jsp").forward(request, response);
 		
 	}
 

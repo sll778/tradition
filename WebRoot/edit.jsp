@@ -28,7 +28,7 @@ ArrayList<CustomKind> customKinds = (ArrayList<CustomKind>)request.getAttribute(
   </head>
   
   <body>
-    <div style="background-color:#cf9e9e;width:100%;height:35px"><a href="main.jsp">习俗网后台系统</a>&nbsp;<a href="customServlet">传统习俗</a></div>
+    <div style="background-color:#cf9e9e;width:100%;height:35px"><a href="main.jsp">习俗网后台系统</a>&nbsp;<a href="customServlet">传统习俗</a>&nbsp;<a href="userManageServlet">会员管理</a>&nbsp;<a href="approveServlet">申请审批</a></div>
 	  <form action="editUpdateServlet" method="post">  
 	  				 <input type="hidden" name="id" value="<%= custom.getId() %>">
 	    	习俗名称：<input type="text" name="name" value="<%=custom.getName() %>"/>

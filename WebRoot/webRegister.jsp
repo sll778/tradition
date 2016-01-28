@@ -23,7 +23,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <div><a href="">习俗网</a>&nbsp;<a href="webCustomServlet">传统习俗</a>&nbsp;<a href="webLogin.jsp">登录</a>&nbsp;<a href="webRegister.jsp">注册</a></div> 
+    <div><a href="">习俗网</a>&nbsp;<a href="webCustomServlet">传统习俗</a>&nbsp;
+  <%
+  	String logname = (String)session.getAttribute("logname");
+  	if(logname!=null){
+  	%>
+  	欢迎来到习俗网，<%= logname %>~
+  	<% 
+  	} else {
+   %>
+  <a href="webLogin.jsp">登录</a>&nbsp;
+  <%
+  	}
+   %>
+  <a href="webRegister.jsp">注册</a></div> 
     <form action="webRegisterServlet" method="post">
     	登录名<input type="text" name="logname" />
     	姓名<input type="text" name="name"/>

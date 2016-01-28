@@ -87,9 +87,9 @@ public class User {
 			res = pre.executeQuery();
 			while(res.next()){
 				User user = new User();
-				user.setLogname(res.getString(1));
-				user.setName(res.getString(2));
-				user.setEmail(res.getString(4));
+				user.setLogname(res.getString(2));
+				user.setName(res.getString(3));
+				user.setEmail(res.getString(5));
 				users.add(user);
 			}
 		} catch (SQLException e) {
@@ -98,5 +98,37 @@ public class User {
 		return users;
 	} 
 	
+	//根据logname查询id
+	public long getIdByLogname(String logname){
+		DbConn dbc = new DbConn();
+		conn = dbc.getConn();
+		Long userId = 0l;
+		try {
+			pre = conn.prepareStatement("select id from user where logname='"+ logname + "'");
+			res = pre.executeQuery();
+			while(res.next()){
+				userId = res.getLong(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return userId;
+	}
+	
+	public String getLognameById(Long id){
+		DbConn dbc = new DbConn();
+		conn = dbc.getConn();
+		String logname = "";
+		try {
+			pre = conn.prepareStatement("select * from user where id ="+ id);
+			res = pre.executeQuery();
+			while(res.next()){
+				logname = res.getString(2);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return logname;
+	}
 	
 }

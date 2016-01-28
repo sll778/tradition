@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import bean.FixCustom;
 import bean.User;
 
-public class webApplySaveServlet extends HttpServlet {
+public class loginServlet extends HttpServlet {
 
 	/**
 	 * The doGet method of the servlet. <br>
@@ -25,21 +24,23 @@ public class webApplySaveServlet extends HttpServlet {
 	 * @throws IOException if an error occurred
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		request.setCharacterEncoding("utf-8");
-		String fixContent = request.getParameter("fixContent");
-		Long customId = Long.parseLong(request.getParameter("customId"));
 		
-		//保存申请修改的信息
-		FixCustom fixCustom = new FixCustom();
-		HttpSession session = request.getSession();
-		String logname = (String)session.getAttribute("logname");
-		//根据logname查询id
+		String logname = request.getParameter("logname");
+		String password = request.getParameter("password");
+		
+		//根据用户名，找到密码看是否匹配
 		User user = new User();
-		Long userId = user.getIdByLogname(logname);
-		
-		fixCustom.addFixInfo(fixContent, customId, userId);
-		
-		response.sendRedirect("webCustomServlet");
+		Boolean isLoginSuccess = user.login(logname, password);
+		//如果匹配，则加入session
+		if(isLoginSuccess){
+			HttpSession session = request.getSession();
+			session.setAttribute("logname", logname);
+			request.getRequestDispatcher("customServlet").forward(request, response);
+		}else{
+			//匹配不成功
+		}
 		
 	}
 

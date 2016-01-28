@@ -100,6 +100,34 @@
     <servlet-name>editUpdateServlet</servlet-name>
     <servlet-class>servlet.editUpdateServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>approveServlet</servlet-name>
+    <servlet-class>servlet.approveServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>approveUpdateServlet</servlet-name>
+    <servlet-class>servlet.approveUpdateServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>webMessageServlet</servlet-name>
+    <servlet-class>servlet.webMessageServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>loginServlet</servlet-name>
+    <servlet-class>servlet.loginServlet</servlet-class>
+  </servlet>
+
+
+
+
 
 
 
@@ -179,6 +207,22 @@
   <servlet-mapping>
     <servlet-name>editUpdateServlet</servlet-name>
     <url-pattern>/editUpdateServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>approveServlet</servlet-name>
+    <url-pattern>/approveServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>approveUpdateServlet</servlet-name>
+    <url-pattern>/approveUpdateServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>webMessageServlet</servlet-name>
+    <url-pattern>/webMessageServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>loginServlet</servlet-name>
+    <url-pattern>/loginServlet</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

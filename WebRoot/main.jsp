@@ -23,8 +23,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <div style="background-color:#cf9e9e;width:100%;height:35px"><a href="main.jsp">习俗网后台系统</a>&nbsp;<a href="customServlet">传统习俗</a></div>
+    <div style="background-color:#cf9e9e;width:100%;height:35px"><a href="main.jsp">习俗网后台系统</a>
     <div align="center">欢迎来到传统习俗后台界面</div>
-    
+  <form action="loginServlet" method="post">
+  	登录名<input type="text" name="logname"/>
+  	密码<input type="password" name="password">
+  	<input type="submit" value="登录">
+  </form>
   </body>
 </html>

@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
-Custom custom = (Custom)request.getAttribute("custom");
+ArrayList<Message> messages = (ArrayList<Message>)request.getAttribute("messages");
 
 %>
 
@@ -12,7 +12,7 @@ Custom custom = (Custom)request.getAttribute("custom");
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'webCustomDetail.jsp' starting page</title>
+    <title>My JSP 'message.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -26,7 +26,7 @@ Custom custom = (Custom)request.getAttribute("custom");
   </head>
   
   <body>
-   <div><a href="">习俗网</a>&nbsp;<a href="webCustomServlet">传统习俗</a>&nbsp;<a href="webMessageServlet">我的消息</a>&nbsp;
+  <div><a href="">习俗网</a>&nbsp;<a href="webCustomServlet">传统习俗</a>&nbsp;<a href="webMessageServlet">我的消息</a>&nbsp;
   <%
   	String logname = (String)session.getAttribute("logname");
   	if(logname!=null){
@@ -40,8 +40,16 @@ Custom custom = (Custom)request.getAttribute("custom");
   	}
    %>
   <a href="webRegister.jsp">注册</a></div> 
-  <div><p>习俗名称：<%=custom.getName() %> </p></div>
-  <div><p>习俗内容：<%=custom.getContent() %></p></div>
-  <div><a href="webApplyServlet?customId=<%=custom.getId() %>">申请完善</a></div>
+  <table width="100%">
+  <%for(int i=0;i<messages.size();i++){ 
+  	Message message = messages.get(i);
+  	Long fixId = message.getFixId();
+  	FixCustom fixCustom = new FixCustom();
+  	String content = fixCustom.getContentById(fixId);%>
+  	<tr><td><%= i+1 %></td><td>你好，您的意见“<%= content %>”，已被处理</td></tr>
+  	<%}
+  	 %>
+  </table>
+    
   </body>
 </html>
