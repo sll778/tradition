@@ -5,6 +5,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 Custom custom = null;
 ArrayList<Custom> customs = (ArrayList<Custom>)request.getAttribute("customs");
+String logname = (String)session.getAttribute("logname");
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -26,9 +27,13 @@ ArrayList<Custom> customs = (ArrayList<Custom>)request.getAttribute("customs");
   </head>
   
   <body>
-  <div><a href="">习俗网</a>&nbsp;<a href="webCustomServlet">传统习俗</a>&nbsp;<a href="webMessageServlet">我的消息</a>&nbsp;
+  <div><a href="">习俗网</a>&nbsp;<a href="webCustomServlet">传统习俗</a>&nbsp;
+  
+  <%if(logname!=null){ %>
+  <a href="webMessageServlet">我的消息</a>&nbsp;
+  <%} %>
+  
   <%
-  	String logname = (String)session.getAttribute("logname");
   	if(logname!=null){
   	%>
   	欢迎来到习俗网，<%= logname %>~
@@ -39,9 +44,11 @@ ArrayList<Custom> customs = (ArrayList<Custom>)request.getAttribute("customs");
   <%
   	}
    %>
+  <%if(logname==null){ %>
   <a href="webRegister.jsp">注册</a></div> 
+  <%} %>
   <div align="right">
-	  <form action="searchServlet" method="post">
+	  <form action="webSearchServlet" method="post">
 	  	<input type="text" name="keyword"/>
 	  	<button type="submit">搜索</button>
 	  </form>

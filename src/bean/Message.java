@@ -43,6 +43,8 @@ public class Message {
 			pre.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			this.closeAll();
 		}
 		
 	}
@@ -63,8 +65,31 @@ public class Message {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			this.closeAll();
 		}
 		return messages;
 	}
+	
+	public void closeAll(){
+		
+		if(pre!=null){
+			try {
+				pre.close();
+				pre=null;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		if(conn!=null){
+			try {
+				conn.close();
+				conn=null;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 	
 }

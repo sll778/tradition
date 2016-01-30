@@ -27,6 +27,8 @@ public class FixCustom {
 			pre.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			this.closeAll();
 		}
 	}
 	
@@ -50,6 +52,8 @@ public class FixCustom {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			this.closeAll();
 		}
 		return fixCustoms;
 	}
@@ -63,6 +67,8 @@ public class FixCustom {
 			pre.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			this.closeAll();
 		}
 	}
 	
@@ -75,6 +81,8 @@ public class FixCustom {
 			pre.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			this.closeAll();
 		}
 	}
 	
@@ -91,6 +99,8 @@ public class FixCustom {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			this.closeAll();
 		}
 		return userId;
 	}
@@ -107,9 +117,32 @@ public class FixCustom {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			this.closeAll();
 		}
 		return content;
 	}
+	
+	public void closeAll(){
+		
+		if(pre!=null){
+			try {
+				pre.close();
+				pre=null;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		if(conn!=null){
+			try {
+				conn.close();
+				conn=null;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 	
 	
 	public long getId() {

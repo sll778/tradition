@@ -4,7 +4,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
 Custom custom = (Custom)request.getAttribute("custom");
-
+String logname = (String)session.getAttribute("logname");
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -26,9 +26,13 @@ Custom custom = (Custom)request.getAttribute("custom");
   </head>
   
   <body>
-   <div><a href="">习俗网</a>&nbsp;<a href="webCustomServlet">传统习俗</a>&nbsp;<a href="webMessageServlet">我的消息</a>&nbsp;
+   <div><a href="">习俗网</a>&nbsp;<a href="webCustomServlet">传统习俗</a>&nbsp;
+   
+   <%if(logname!=null){ %>
+   <a href="webMessageServlet">我的消息</a>&nbsp;
+   <%} %>
+   
   <%
-  	String logname = (String)session.getAttribute("logname");
   	if(logname!=null){
   	%>
   	欢迎来到习俗网，<%= logname %>~
@@ -39,7 +43,9 @@ Custom custom = (Custom)request.getAttribute("custom");
   <%
   	}
    %>
+  <%if(logname==null){ %>
   <a href="webRegister.jsp">注册</a></div> 
+  <%} %> 
   <div><p>习俗名称：<%=custom.getName() %> </p></div>
   <div><p>习俗内容：<%=custom.getContent() %></p></div>
   <div><a href="webApplyServlet?customId=<%=custom.getId() %>">申请完善</a></div>

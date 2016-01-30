@@ -36,7 +36,7 @@ public class webMessageServlet extends HttpServlet {
 		
 		ArrayList<Message> messages = message.getAllMessage(userId);
 		request.setAttribute("messages", messages);
-		request.getRequestDispatcher("message.jsp").forward(request, response);
+		request.getRequestDispatcher("webMessage.jsp").forward(request, response);
 		
 	}
 

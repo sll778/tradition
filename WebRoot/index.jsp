@@ -2,6 +2,9 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
+String logname = (String)session.getAttribute("logname");
+
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -21,9 +24,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  <div><a href="">习俗网</a>&nbsp;<a href="webCustomServlet">传统习俗</a>&nbsp;<a href="webMessageServlet">我的消息</a>&nbsp;
+  <div><a href="">习俗网</a>&nbsp;<a href="webCustomServlet">传统习俗</a>&nbsp;
+  <%if(logname!=null){ %>
+  <a href="webMessageServlet">我的消息</a>&nbsp;
+  <%} %>
+  
   <%
-  	String logname = (String)session.getAttribute("logname");
+  	
   	if(logname!=null){
   	%>
   	欢迎来到习俗网，<%= logname %>~
@@ -34,7 +41,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <%
   	}
    %>
+   
+  <%if(logname==null){ %>
   <a href="webRegister.jsp">注册</a></div> 
+  <%} %>
   <div align="center">欢迎来到中华传统习俗网，这里有最全面、最有用的习俗信息，让中华民族的传统在我们的手中代代传承！</div>
   <div align="center"><img src="images/welcome.jpg"></div>
   </body>

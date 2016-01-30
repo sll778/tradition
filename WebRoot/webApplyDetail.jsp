@@ -5,6 +5,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 String customId = request.getAttribute("customId").toString();
 
+String logname = (String)session.getAttribute("logname");
+
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -26,9 +28,13 @@ String customId = request.getAttribute("customId").toString();
   </head>
   
   <body>
-  <div><a href="">习俗网</a>&nbsp;<a href="webCustomServlet">传统习俗</a>&nbsp;<a href="webMessageServlet">我的消息</a>&nbsp;
+  <div><a href="">习俗网</a>&nbsp;<a href="webCustomServlet">传统习俗</a>&nbsp;
+  
+  <%if(logname!=null){ %>
+  <a href="webMessageServlet">我的消息</a>&nbsp;
+  <%} %>
+  
   <%
-  	String logname = (String)session.getAttribute("logname");
   	if(logname!=null){
   	%>
   	欢迎来到习俗网，<%= logname %>~
@@ -39,7 +45,9 @@ String customId = request.getAttribute("customId").toString();
   <%
   	}
    %>
+   <%if(logname==null){ %>
   <a href="webRegister.jsp">注册</a></div> 
+  <%} %>
   <form action="webApplySaveServlet" method="post">
   	<input type="hidden" value=<%=customId%> name="customId"/>
     申请修改的信息：<input type="text" name="fixContent" />

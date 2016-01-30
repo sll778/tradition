@@ -39,7 +39,9 @@ ArrayList<Message> messages = (ArrayList<Message>)request.getAttribute("messages
   <%
   	}
    %>
+  <%if(logname==null){ %>
   <a href="webRegister.jsp">注册</a></div> 
+  <%} %> 
   <table width="100%">
   <%for(int i=0;i<messages.size();i++){ 
   	Message message = messages.get(i);

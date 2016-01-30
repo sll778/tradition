@@ -20,6 +20,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 
+
+
+
   </head>
   
   <body>
@@ -36,13 +39,63 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <%
   	}
    %>
+  <%if(logname==null){ %>
   <a href="webRegister.jsp">注册</a></div> 
-    <form action="webRegisterServlet" method="post">
-    	登录名<input type="text" name="logname" />
-    	姓名<input type="text" name="name"/>
-    	密码<input type="text" name="password"/>
-    	邮箱<input type="text" name="email"/>
+  <%} %> 
+    <form action="webRegisterServlet" onsubmit="return validateForm()" method="post">
+    	*登录名<input type="text" name="logname" id="logname"/>
+    	*姓名<input type="text" name="name" id="name"/>
+    	*密码<input type="password" name="password" id="password"/>
+    	*重复密码<input type="password" name="repassword" id="repassword"/>
+    	*邮箱<input type="text" name="email" id="email"/>
     	<input type="submit" value="注册">
     </form>
+    
+    <script>
+function validate(value,text){
+	
+	if(value==null||value==""){
+		alert(text);
+		return false
+	}else {
+		return true
+	}
+}
+function validateEmail(value){
+	var pattern = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;  
+	if(!pattern.test(value)){
+		alert("请输入正确的邮箱");
+		return false
+	}else{
+		return true
+	}
+
+}
+
+function validateForm(){
+	var logname = document.getElementById("logname").value;
+	var name = document.getElementById("name").value;
+	var password = document.getElementById("password").value;
+	var repassword = document.getElementById("repassword").value;
+	var email = document.getElementById("email").value;
+	if(validate(logname,"登录名不能为空！")==false){
+		return false
+	}else if(validate(name,"姓名不能为空")==false){
+		return false
+	}else if(validate(password,"密码不能为空")==false){
+		return false
+	}else if(validate(repassword,"重复密码不能为空")==false){
+		return false
+	}else if(validate(email,"邮箱不能为空")==false){
+		return false
+	}else if(validateEmail(email)==false) {
+		return false
+	}
+	
+	
+}
+
+
+</script>
   </body>
 </html>

@@ -22,6 +22,18 @@ ArrayList<Custom> customs = (ArrayList<Custom>)request.getAttribute("customs");
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+<script>
+function deleteFunction(){
+
+	if(confirm("是否确认需要删除？")){
+		window.location='';
+	}else{
+		
+	}
+	
+}
+</script>
+
 
   </head>
   
@@ -37,7 +49,7 @@ ArrayList<Custom> customs = (ArrayList<Custom>)request.getAttribute("customs");
     	CustomKind customKind = new CustomKind();
     	customKind = customKind.getById(customId);
      %>
-    <tr><td><%= custom.getName() %></td><td><%= custom.getContent() %></td><td><%= customKind.getName() %></td><td><a href="deleteServlet?customId=<%=custom.getId() %>">删除</a>&nbsp;<a href="editServlet?customId=<%=custom.getId() %>">编辑</a></td></tr>
+    <tr><td><%= custom.getName() %></td><td><%= custom.getContent() %></td><td><%= customKind.getName() %></td><td><a href="deleteServlet?customId=<%=custom.getId() %>" onclick="return confirm('确认要删除吗？')">删除</a>&nbsp;<a href="editServlet?customId=<%=custom.getId() %>">编辑</a></td></tr>
     <%
     }
      %>

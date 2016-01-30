@@ -36,10 +36,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <%
   	}
    %>
+  <%if(logname==null){ %>
   <a href="webRegister.jsp">注册</a></div> 
+  <%} %>
   <form action="webLoginServlet" method="post">
   	登录名<input type="text" name="logname"/>
-  	密码<input type="text" name="password">
+  	密码<input type="password" name="password">
   	<input type="submit" value="登录">
   </form>
   	

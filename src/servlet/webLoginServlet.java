@@ -38,6 +38,7 @@ public class webLoginServlet extends HttpServlet {
 			request.getRequestDispatcher("webCustomServlet").forward(request, response);
 		}else{
 			//匹配不成功
+			response.sendRedirect("webLogin.jsp");
 		}
 		
 	}

@@ -44,6 +44,8 @@ public class CustomKind {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			this.closeAll();
 		}
 		
 		return customKinds;
@@ -64,8 +66,31 @@ public class CustomKind {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			this.closeAll();
 		}
 		return customKind;
 	}
+	
+	public void closeAll(){
+		
+		if(pre!=null){
+			try {
+				pre.close();
+				pre=null;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		if(conn!=null){
+			try {
+				conn.close();
+				conn=null;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 	
 }

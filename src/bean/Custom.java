@@ -103,7 +103,7 @@ public class Custom {
 				custom.setId(res.getLong(1));
 				custom.setName(res.getString(2));
 				custom.setContent(res.getString(3));
-				custom.setKindId(res.getLong(4));
+				custom.setKindId(res.getLong(5));
 				customs.add(custom);
 			}
 		} catch (Exception e) {
@@ -124,6 +124,8 @@ public class Custom {
 			pre.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			this.closeAll();
 		}
 	}
 	

@@ -51,7 +51,11 @@ ArrayList<FixCustom> fixCustoms = (ArrayList)request.getAttribute("fixCustoms");
     	<%}else{ %>
     	<td>未审批</td>
     	<%} %>
-    	<td><a href="approveUpdateServlet?flag=1&fixId=<%= fixCustom.getId()%>">采纳</a>&nbsp;<a href="approveUpdateServlet?flag=0&fixId=<%= fixCustom.getId()%>">不采纳</a>&nbsp;<a href="editServlet?customId=<%= fixCustom.getCustomId() %>">点击修改</a></td></tr>
+    	<td>
+    	<% if(!fixCustom.isStatus()){ %>
+    	<a href="approveUpdateServlet?flag=1&fixId=<%= fixCustom.getId()%>">采纳</a>&nbsp;<a href="approveUpdateServlet?flag=0&fixId=<%= fixCustom.getId()%>">不采纳</a>&nbsp;
+    	<% }%>
+    	<a href="editServlet?customId=<%= fixCustom.getCustomId() %>">点击修改</a></td></tr>
     	<%
     	 }
     	 %>

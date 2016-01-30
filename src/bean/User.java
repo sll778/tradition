@@ -47,10 +47,12 @@ public class User {
 		DbConn dbc = new DbConn();
 		conn = dbc.getConn();
 		try {
-			pre = conn.prepareStatement("insert into user values('"+ logname +"','"+ name +"','"+ password +"','"+ email +"')");
+			pre = conn.prepareStatement("insert into user(logname,name,password,email) values('"+ logname +"','"+ name +"','"+ password +"','"+ email +"')");
 			pre.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			this.closeAll();
 		}
 	}
 	
@@ -59,7 +61,7 @@ public class User {
 		DbConn dbc = new DbConn();
 		conn = dbc.getConn();
 		Boolean flag = false;
-		String passwd = null;
+		String passwd = "";
 		
 		try {
 			pre = conn.prepareStatement("select password from user where logname='"+logname+"'");
@@ -72,6 +74,8 @@ public class User {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally{
+			this.closeAll();
 		}
 		return flag;
 	}
@@ -94,6 +98,8 @@ public class User {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			this.closeAll();
 		}
 		return users;
 	} 
@@ -111,6 +117,8 @@ public class User {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			this.closeAll();
 		}
 		return userId;
 	}
@@ -127,8 +135,31 @@ public class User {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			this.closeAll();
 		}
 		return logname;
 	}
+	
+	public void closeAll(){
+		
+		if(pre!=null){
+			try {
+				pre.close();
+				pre=null;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		if(conn!=null){
+			try {
+				conn.close();
+				conn=null;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 	
 }

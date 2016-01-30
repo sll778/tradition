@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.Custom;
 
-public class searchServlet extends HttpServlet {
+public class webSearchServlet extends HttpServlet {
 
 	/**
 	 * The doGet method of the servlet. <br>
@@ -34,7 +34,7 @@ public class searchServlet extends HttpServlet {
 		customs = custom.search(keyword);
 		//跳转到界面
 		request.setAttribute("customs", customs);
-		request.getRequestDispatcher("webCustomServlet").forward(request, response);
+		request.getRequestDispatcher("webCustom.jsp").forward(request, response);
 		
 	}
 

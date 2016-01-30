@@ -40,6 +40,7 @@ public class loginServlet extends HttpServlet {
 			request.getRequestDispatcher("customServlet").forward(request, response);
 		}else{
 			//匹配不成功
+			response.sendRedirect("main.jsp");
 		}
 		
 	}
