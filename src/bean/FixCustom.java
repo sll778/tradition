@@ -38,7 +38,7 @@ public class FixCustom {
 		DbConn dbc = new DbConn();
 		conn = dbc.getConn();
 		try {
-			pre = conn.prepareStatement("select * from fix_custom");
+			pre = conn.prepareStatement("select * from fix_custom order by id desc");
 			res = pre.executeQuery();
 			while(res.next()){
 				FixCustom fixCustom = new FixCustom();
@@ -77,7 +77,7 @@ public class FixCustom {
 		DbConn dbc = new DbConn();
 		conn = dbc.getConn();
 		try {
-			pre = conn.prepareStatement("update fix_custom set status = 1 where id=" + id );
+			pre = conn.prepareStatement("update fix_custom set status = 1 where id=" + id);
 			pre.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -121,6 +121,27 @@ public class FixCustom {
 			this.closeAll();
 		}
 		return content;
+	}
+	
+	public FixCustom getById(Long id){
+		DbConn dbc = new DbConn();
+		conn = dbc.getConn();
+		FixCustom fixCustom = new FixCustom();
+		try {
+			pre = conn.prepareStatement("select * from fix_custom where id=" + id);
+			res = pre.executeQuery();
+			while(res.next()){
+				fixCustom.setId(res.getLong(1));
+				fixCustom.setFixContent(res.getString(2));
+				fixCustom.setCustomId(res.getLong(3));
+				fixCustom.setPass(res.getBoolean(4));
+				fixCustom.setUserId(res.getLong(5));
+				fixCustom.setStatus(res.getBoolean(6));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return fixCustom;
 	}
 	
 	public void closeAll(){

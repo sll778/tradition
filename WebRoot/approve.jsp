@@ -5,6 +5,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 ArrayList<FixCustom> fixCustoms = (ArrayList)request.getAttribute("fixCustoms");
 
+String logname = (String)session.getAttribute("adminLogname");
+
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -26,7 +28,12 @@ ArrayList<FixCustom> fixCustoms = (ArrayList)request.getAttribute("fixCustoms");
   </head>
   
   <body>
-  <div style="background-color:#cf9e9e;width:100%;height:35px"><a href="main.jsp">习俗网后台系统</a>&nbsp;<a href="customServlet">传统习俗</a>&nbsp;<a href="userManageServlet">会员管理</a>&nbsp;<a href="approveServlet">申请审批</a></div>
+  <div style="background-color:#cf9e9e;width:100%;height:35px"><a href="main.jsp">习俗网后台系统</a>&nbsp;
+  <% if(logname==null){ %>
+    <a href="toLoginServlet">登录</a>
+    <%}else{ %>
+    <a href="customServlet">传统习俗</a>&nbsp;<a href="userManageServlet">会员管理</a>&nbsp;<a href="approveServlet">申请审批</a>&nbsp;欢迎您，<%=logname %><a href="adminLogoutServlet">退出</a></div>
+    <%} %>
     
     <table width="100%">
     	<tr><td>习俗编号</td><td>申请修改内容</td><td>是否通过审批</td><td>申请人</td><td>审批状态</td><td>操作</td></tr>
@@ -36,7 +43,7 @@ ArrayList<FixCustom> fixCustoms = (ArrayList)request.getAttribute("fixCustoms");
     		//根据userId找到user信息
 			User user = new User();
 			Long id = fixCustom.getUserId();
-			String logname = user.getLognameById(id);
+			String name = user.getLognameById(id);
     	 %>
     	<tr><td><%= fixCustom.getCustomId() %></td><td><%= fixCustom.getFixContent() %></td>
     	<%if(fixCustom.isPass()){ %>
@@ -45,7 +52,7 @@ ArrayList<FixCustom> fixCustoms = (ArrayList)request.getAttribute("fixCustoms");
     	<td>未通过</td>
     	<%} 
     	%>
-    	<td><%= logname %></td>
+    	<td><%= name %></td>
     	<% if(fixCustom.isStatus()){ %>
     	<td>已审批</td>
     	<%}else{ %>
@@ -53,7 +60,8 @@ ArrayList<FixCustom> fixCustoms = (ArrayList)request.getAttribute("fixCustoms");
     	<%} %>
     	<td>
     	<% if(!fixCustom.isStatus()){ %>
-    	<a href="approveUpdateServlet?flag=1&fixId=<%= fixCustom.getId()%>">采纳</a>&nbsp;<a href="approveUpdateServlet?flag=0&fixId=<%= fixCustom.getId()%>">不采纳</a>&nbsp;
+    	<a href="toApproveServlet?flag=1&fixId=<%= fixCustom.getId()%>">采纳</a>&nbsp;
+    	<a href="toApproveServlet?flag=0&fixId=<%= fixCustom.getId()%>">不采纳</a>&nbsp;
     	<% }%>
     	<a href="editServlet?customId=<%= fixCustom.getCustomId() %>">点击修改</a></td></tr>
     	<%

@@ -5,6 +5,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 Custom custom = null;
 ArrayList<Custom> customs = (ArrayList<Custom>)request.getAttribute("customs");
+
+String logname = (String)session.getAttribute("adminLogname");
+
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML  4.01 Transitional//EN">
@@ -38,7 +41,12 @@ function deleteFunction(){
   </head>
   
   <body>
-    <div style="background-color:#cf9e9e;width:100%;height:35px"><a href="main.jsp">习俗网后台系统</a>&nbsp;<a href="customServlet">传统习俗</a>&nbsp;<a href="userManageServlet">会员管理</a>&nbsp;<a href="approveServlet">申请审批</a></div>
+    <div style="background-color:#cf9e9e;width:100%;height:35px"><a href="main.jsp">习俗网后台系统</a>&nbsp;
+    <% if(logname==null){ %>
+    <a href="toLoginServlet">登录</a>
+    <%}else{ %>
+    <a href="customServlet">传统习俗</a>&nbsp;<a href="userManageServlet">会员管理</a>&nbsp;<a href="approveServlet">申请审批</a>&nbsp;欢迎您，<%=logname %><a href="adminLogoutServlet">退出</a></div>
+    <%} %>
     <a href="beforeAddServlet">增加</a>
     <table width="100%">
     <tr><td>习俗</td><td>内容</td><td>类别</td><td>操作</td></tr>

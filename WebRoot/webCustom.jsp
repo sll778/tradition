@@ -36,7 +36,7 @@ String logname = (String)session.getAttribute("logname");
   <%
   	if(logname!=null){
   	%>
-  	欢迎来到习俗网，<%= logname %>~
+  	欢迎来到习俗网，<%= logname %>~ <a href="logoutServlet">退出登录</a>
   	<% 
   	} else {
    %>
@@ -65,7 +65,13 @@ String logname = (String)session.getAttribute("logname");
     <tr><td><%= custom.getName() %></td><td><%= custom.getContent() %></td><td><%=customKind.getName() %></td><td><a href="webViewServlet?customId=<%=custom.getId() %>">查看</a></td></tr>
     <%
     }
-     %>
+    
+    if(customs.size()==0){
+    %>
+    	<tr><td>未搜索到相关数据</td></tr>
+    <% 
+    	}
+    %>
     </table>
   </body>
 </html>

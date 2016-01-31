@@ -1,7 +1,10 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,javax.servlet.http.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
+String logname = (String)session.getAttribute("adminLogname");
+
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -24,11 +27,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <div style="background-color:#cf9e9e;width:100%;height:35px"><a href="main.jsp">习俗网后台系统</a>
+    <% if(logname==null){ %>
+    <a href="toLoginServlet">登录</a>
+    <%}else{ %>
+    <a href="customServlet">传统习俗</a>&nbsp;<a href="userManageServlet">会员管理</a>&nbsp;<a href="approveServlet">申请审批</a>&nbsp;欢迎您，<%=logname %><a href="adminLogoutServlet">退出</a></div>
+    <%} %>
+    
     <div align="center">欢迎来到传统习俗后台界面</div>
-  <form action="loginServlet" method="post">
-  	登录名<input type="text" name="logname"/>
-  	密码<input type="password" name="password">
-  	<input type="submit" value="登录">
-  </form>
+  
   </body>
 </html>

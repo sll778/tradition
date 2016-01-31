@@ -6,6 +6,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 Custom custom = (Custom)request.getAttribute("custom");
 ArrayList<CustomKind> customKinds = (ArrayList<CustomKind>)request.getAttribute("customKinds");
 
+String logname = (String)session.getAttribute("adminLogname");
 
 %>
 
@@ -28,7 +29,12 @@ ArrayList<CustomKind> customKinds = (ArrayList<CustomKind>)request.getAttribute(
   </head>
   
   <body>
-    <div style="background-color:#cf9e9e;width:100%;height:35px"><a href="main.jsp">习俗网后台系统</a>&nbsp;<a href="customServlet">传统习俗</a>&nbsp;<a href="userManageServlet">会员管理</a>&nbsp;<a href="approveServlet">申请审批</a></div>
+    <div style="background-color:#cf9e9e;width:100%;height:35px"><a href="main.jsp">习俗网后台系统</a>&nbsp;
+    <% if(logname==null){ %>
+    <a href="toLoginServlet">登录</a>
+    <%}else{ %>
+    <a href="customServlet">传统习俗</a>&nbsp;<a href="userManageServlet">会员管理</a>&nbsp;<a href="approveServlet">申请审批</a>&nbsp;欢迎您，<%=logname %><a href="adminLogoutServlet">退出</a></div>
+    <%} %>
 	  <form action="editUpdateServlet" method="post">  
 	  				 <input type="hidden" name="id" value="<%= custom.getId() %>">
 	    	<div>习俗名称：<input type="text" name="name" value="<%=custom.getName() %>"/></div>
@@ -44,7 +50,7 @@ ArrayList<CustomKind> customKinds = (ArrayList<CustomKind>)request.getAttribute(
 	    			</select>
 	    	</div>
 	    	<div>
-	    	习俗内容：<textarea rows="3" cols="20" name="content" value="<%=custom.getContent() %>"/></textarea>
+	    	习俗内容：<textarea rows="3" cols="20" name="content" /><%=custom.getContent() %></textarea>
 	    	</div>
 	    	<input type="submit" name="submit">
 	    </form>

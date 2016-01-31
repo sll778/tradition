@@ -36,7 +36,7 @@ public class loginServlet extends HttpServlet {
 		//如果匹配，则加入session
 		if(isLoginSuccess){
 			HttpSession session = request.getSession();
-			session.setAttribute("logname", logname);
+			session.setAttribute("adminLogname", logname);
 			request.getRequestDispatcher("customServlet").forward(request, response);
 		}else{
 			//匹配不成功

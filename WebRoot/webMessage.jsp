@@ -31,7 +31,7 @@ ArrayList<Message> messages = (ArrayList<Message>)request.getAttribute("messages
   	String logname = (String)session.getAttribute("logname");
   	if(logname!=null){
   	%>
-  	欢迎来到习俗网，<%= logname %>~
+  	欢迎来到习俗网，<%= logname %>~<a href="logoutServlet">退出登录</a>
   	<% 
   	} else {
    %>
@@ -46,9 +46,21 @@ ArrayList<Message> messages = (ArrayList<Message>)request.getAttribute("messages
   <%for(int i=0;i<messages.size();i++){ 
   	Message message = messages.get(i);
   	Long fixId = message.getFixId();
+  	String reason = message.getReason();
   	FixCustom fixCustom = new FixCustom();
-  	String content = fixCustom.getContentById(fixId);%>
-  	<tr><td><%= i+1 %></td><td>你好，您的意见“<%= content %>”，已被处理</td></tr>
+  	fixCustom = fixCustom.getById(fixId);%>
+  	<tr><td><%= i+1 %></td><td>你好，您的意见“<%= fixCustom.getFixContent() %>”
+  	<%
+  	if(fixCustom.isPass()){
+  	 %>
+  	 已通过审批
+  	 <%
+  	 }else{%>
+  	 未通过审批
+  	 <%
+  	 } %>
+  	
+  	，审批意见为“<%=reason %>”</td></tr>
   	<%}
   	 %>
   </table>

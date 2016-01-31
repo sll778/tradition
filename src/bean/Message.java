@@ -10,6 +10,7 @@ public class Message {
 	private long id;
 	private long fixId;
 	private long userId;
+	private String reason;
 	
 	private Connection conn = null;
 	private PreparedStatement pre = null;
@@ -35,11 +36,11 @@ public class Message {
 	}
 	
 	//添加一条消息记录
-	public void add(Long userId,Long fixId){
+	public void add(Long userId,Long fixId,String reason){
 		DbConn dbc = new DbConn();
 		conn = dbc.getConn();
 		try {
-			pre = conn.prepareStatement("insert into message (userId,fixId) values("+ userId + ", "+ fixId+")" );
+			pre = conn.prepareStatement("insert into message (userId,fixId,reason) values("+ userId + ", "+ fixId+",'"+ reason +"')" );
 			pre.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -61,6 +62,7 @@ public class Message {
 				message.setId(res.getLong(1));
 				message.setUserId(res.getLong(2));
 				message.setFixId(res.getLong(3));
+				message.setReason(res.getString(4));
 				messages.add(message);
 			}
 		} catch (SQLException e) {
@@ -89,6 +91,12 @@ public class Message {
 				e.printStackTrace();
 			}
 		}
+	}
+	public String getReason() {
+		return reason;
+	}
+	public void setReason(String reason) {
+		this.reason = reason;
 	}
 
 	

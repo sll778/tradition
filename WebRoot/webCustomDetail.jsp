@@ -35,7 +35,7 @@ String logname = (String)session.getAttribute("logname");
   <%
   	if(logname!=null){
   	%>
-  	欢迎来到习俗网，<%= logname %>~
+  	欢迎来到习俗网，<%= logname %>~<a href="logoutServlet">退出登录</a>
   	<% 
   	} else {
    %>
