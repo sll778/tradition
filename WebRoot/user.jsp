@@ -36,12 +36,12 @@ String logname = (String)session.getAttribute("adminLogname");
     <%} %>
   	<div>
   	<table width="100%" >
-  		<tr><td>登录名</td><td>姓名</td><td>邮箱</td><tr>
+  		<tr><td>登录名</td><td>姓名</td><td>邮箱</td><td>操作</td><tr>
 	<%
   		for(int i=0;i<users.size();i++){
   			User user = users.get(i);
   	 %>
-  	 	<tr><td><%= user.getLogname() %></td><td><%= user.getName() %></td><td><%= user.getEmail() %></td></tr>
+  	 	<tr><td><%= user.getLogname() %></td><td><%= user.getName() %></td><td><%= user.getEmail() %></td><td><a href="resetPassServlet?userId=<%=user.getId() %>">重置密码</a></td></tr>
   	 <%
   	 }
   	  %>

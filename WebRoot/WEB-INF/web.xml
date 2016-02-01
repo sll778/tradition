@@ -148,6 +148,13 @@
     <servlet-name>adminLogoutServlet</servlet-name>
     <servlet-class>servlet.adminLogoutServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>resetPassServlet</servlet-name>
+    <servlet-class>servlet.resetPassServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -268,12 +275,66 @@
     <servlet-name>adminLogoutServlet</servlet-name>
     <url-pattern>/adminLogoutServlet</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>resetPassServlet</servlet-name>
+    <url-pattern>/resetPassServlet</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   
   
- 
+  
+  
+  <filter>
+  	<filter-name>AuthorityFilter</filter-name>
+  	<filter-class>filter.AuthorityFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>AuthorityFilter</filter-name>
+  	<url-pattern>/toApproveServlet</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>AuthorityFilter</filter-name>
+	<url-pattern>/addServlet</url-pattern>	
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>AuthorityFilter</filter-name>
+	<url-pattern>/approveServlet</url-pattern>	
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>AuthorityFilter</filter-name>
+	<url-pattern>/approveUpdateServlet</url-pattern>	
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>AuthorityFilter</filter-name>
+	<url-pattern>/beforeAddServlet</url-pattern>	
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>AuthorityFilter</filter-name>
+	<url-pattern>/customServlet</url-pattern>	
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>AuthorityFilter</filter-name>
+	<url-pattern>/deleteServlet</url-pattern>	
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>AuthorityFilter</filter-name>
+	<url-pattern>/editServlet</url-pattern>	
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>AuthorityFilter</filter-name>
+	<url-pattern>/editUpdateServlet</url-pattern>	
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>AuthorityFilter</filter-name>
+	<url-pattern>/userManageServlet</url-pattern>	
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>AuthorityFilter</filter-name>
+	<url-pattern>/resetPassServlet</url-pattern>	
+  </filter-mapping>
   
 </web-app>
  

@@ -11,6 +11,7 @@ public class User {
 	private String name;
 	private String password;
 	private String email;
+	private Long id;
 	
 	private Connection conn = null;
 	private PreparedStatement pre = null;
@@ -91,6 +92,7 @@ public class User {
 			res = pre.executeQuery();
 			while(res.next()){
 				User user = new User();
+				user.setId(res.getLong(1));
 				user.setLogname(res.getString(2));
 				user.setName(res.getString(3));
 				user.setEmail(res.getString(5));
@@ -141,6 +143,20 @@ public class User {
 		return logname;
 	}
 	
+	//根据id更改密码
+	public void changePassById(Long id){
+		DbConn dbc = new DbConn();
+		conn = dbc.getConn();
+		try {
+			pre = conn.prepareStatement("update user set password = '1234'");
+			pre.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			this.closeAll();
+		}
+	}
+	
 	public void closeAll(){
 		
 		if(pre!=null){
@@ -159,6 +175,12 @@ public class User {
 				e.printStackTrace();
 			}
 		}
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	

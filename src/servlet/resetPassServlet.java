@@ -7,9 +7,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-public class toApproveServlet extends HttpServlet {
+import bean.User;
+
+public class resetPassServlet extends HttpServlet {
 
 	/**
 	 * The doGet method of the servlet. <br>
@@ -24,14 +25,13 @@ public class toApproveServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		String flag = request.getParameter("flag");
-		String fixId = request.getParameter("fixId");
+		Long userId = Long.parseLong(request.getParameter("userId"));
 		
-		request.setAttribute("flag", flag);
-		request.setAttribute("fixId", fixId);
+		//根据userId更改密码
+		User user = new User();
+		user.changePassById(userId);
 		
-		//跳转到填写审批原因界面
-		request.getRequestDispatcher("approveReason.jsp").forward(request, response);
+		response.sendRedirect("userManageServlet");
 		
 	}
 
