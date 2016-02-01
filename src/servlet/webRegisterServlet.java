@@ -33,7 +33,7 @@ public class webRegisterServlet extends HttpServlet {
 		user.register(logname, name, password, email);
 		
 		//跳转到主页面
-		response.sendRedirect("webCustomServlet");
+		response.sendRedirect("webLoginServlet?logname="+logname+"&password="+password);
 	}
 
 	/**

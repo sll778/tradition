@@ -30,7 +30,7 @@ public class webLoginServlet extends HttpServlet {
 		
 		//根据用户名，找到密码看是否匹配
 		User user = new User();
-		Boolean isLoginSuccess = user.login(logname, password);
+		Boolean isLoginSuccess = user.login(logname, password,1);
 		//如果匹配，则加入session
 		if(isLoginSuccess){
 			HttpSession session = request.getSession();

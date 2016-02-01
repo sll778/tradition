@@ -12,6 +12,7 @@ public class User {
 	private String password;
 	private String email;
 	private Long id;
+	private int type;
 	
 	private Connection conn = null;
 	private PreparedStatement pre = null;
@@ -48,7 +49,7 @@ public class User {
 		DbConn dbc = new DbConn();
 		conn = dbc.getConn();
 		try {
-			pre = conn.prepareStatement("insert into user(logname,name,password,email) values('"+ logname +"','"+ name +"','"+ password +"','"+ email +"')");
+			pre = conn.prepareStatement("insert into user(logname,name,password,email,type) values('"+ logname +"','"+ name +"','"+ password +"','"+ email +"',1)");
 			pre.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -57,20 +58,22 @@ public class User {
 		}
 	}
 	
-	//登录
-	public Boolean login(String logname,String password){
+	//后台登录
+	public Boolean login(String logname,String password,int type){
 		DbConn dbc = new DbConn();
 		conn = dbc.getConn();
 		Boolean flag = false;
 		String passwd = "";
+		int type2 = 0;
 		
 		try {
-			pre = conn.prepareStatement("select password from user where logname='"+logname+"'");
+			pre = conn.prepareStatement("select password,type from user where logname='"+logname+"'");
 			res = pre.executeQuery();
 			if(res.next()){
 				passwd = res.getString(1);
+				type2 = res.getInt(2);
 			}
-			if(passwd.equals(password)){
+			if((passwd.equals(password)) && (type==type2)){
 				flag = true;
 			}
 		} catch (Exception e) {
@@ -181,6 +184,12 @@ public class User {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
 	}
 
 	

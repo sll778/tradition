@@ -63,6 +63,11 @@ ArrayList<Message> messages = (ArrayList<Message>)request.getAttribute("messages
   	，审批意见为“<%=reason %>”</td></tr>
   	<%}
   	 %>
+  	 <%if(messages.size()==0){
+  	 %>
+  	 <p>未收到任何消息</p>
+  	 <% 
+  	 } %>
   </table>
     
   </body>
