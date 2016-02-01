@@ -151,7 +151,7 @@ public class User {
 		DbConn dbc = new DbConn();
 		conn = dbc.getConn();
 		try {
-			pre = conn.prepareStatement("update user set password = '1234'");
+			pre = conn.prepareStatement("update user set password = '1234' where id=" + id );
 			pre.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

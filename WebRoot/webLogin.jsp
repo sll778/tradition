@@ -44,6 +44,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	密码<input type="password" name="password">
   	<input type="submit" value="登录">
   </form>
+  
+    <script> 
+	  var error ='<%=request.getParameter("error")%>';
+	  if(error=='1'){
+	   	alert("用户名或者密码错误，登录失败!");
+	  }
+	</script>
   	
   </body>
 </html>
