@@ -27,7 +27,7 @@ public class webCustomServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		int pageNow = 1;
 		Custom custom = new Custom();
-		ArrayList<Custom> customs = custom.page(10, pageNow);
+		ArrayList<Custom> customs = custom.pageByCache(10, pageNow);
 		request.setAttribute("customs", customs);
 		request.getRequestDispatcher("webCustom.jsp").forward(request, response);
 	}

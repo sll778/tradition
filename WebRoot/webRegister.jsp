@@ -53,7 +53,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <script>
 function validate(value,text){
-	
 	if(value==null||value==""){
 		alert(text);
 		return false

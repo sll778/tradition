@@ -6,6 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import cache.EhcacheUtil;
+
+import net.sf.ehcache.Cache;
+import net.sf.ehcache.CacheManager;
+import net.sf.ehcache.Element;
+
 public class Custom {
 	
 	private long id;
@@ -32,13 +38,24 @@ public class Custom {
 		
 	}
 	
+	//pageByCache的主方法
+	public ArrayList<Custom> pageByCache(int pageSize, int pageNow){
+		
+		String sql = "select id,name,content,kindId from custom limit "+ pageSize*(pageNow-1) + "," + pageSize*pageNow;
+	
+		//调用工具类（EhcacheUtil）中的pageByCache方法,得到想要的数据
+		ArrayList<Custom> customs = EhcacheUtil.pageByCache(sql);
+		return customs;
+	}
+	
+	
 	//根据页面大小和当前的页码显示记录
-	public ArrayList<Custom> page(int pageSize,int pageNow ){
+	public ArrayList<Custom> page(String sql){
 		ArrayList<Custom> customs = new ArrayList();
 		DbConn dbc = new DbConn();
 		conn = dbc.getConn();
 		try {
-			pre = conn.prepareStatement("select id, name,content,kindId from custom limit "+ pageSize*(pageNow-1) + "," + pageSize*pageNow);
+			pre = conn.prepareStatement(sql);
 			res = pre.executeQuery();
 			while(res.next()){
 				Custom custom  = new Custom();
