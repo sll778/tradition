@@ -7,158 +7,152 @@
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
-    <servlet-name>festivalServlet</servlet-name>
-    <servlet-class>servlet.festivalServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
-    <servlet-name>custom</servlet-name>
-    <servlet-class>servlet.admin.custom</servlet-class>
-  </servlet>
-  <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>addServlet</servlet-name>
-    <servlet-class>servlet.addServlet</servlet-class>
+    <servlet-class>servlet.admin.custom.addServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>customServlet</servlet-name>
-    <servlet-class>servlet.customServlet</servlet-class>
+    <servlet-class>servlet.admin.custom.customServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>deleteServlet</servlet-name>
-    <servlet-class>servlet.deleteServlet</servlet-class>
+    <servlet-class>servlet.admin.custom.deleteServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>webCustomServlet</servlet-name>
-    <servlet-class>servlet.webCustomServlet</servlet-class>
+    <servlet-class>servlet.web.custom.webCustomServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>webViewServlet</servlet-name>
-    <servlet-class>servlet.webViewServlet</servlet-class>
+    <servlet-class>servlet.web.custom.webViewServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>webApplyServlet</servlet-name>
-    <servlet-class>servlet.webApplyServlet</servlet-class>
+    <servlet-class>servlet.web.apply.webApplyServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>webRegisterServlet</servlet-name>
-    <servlet-class>servlet.webRegisterServlet</servlet-class>
+    <servlet-class>servlet.web.register.webRegisterServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>webLoginServlet</servlet-name>
-    <servlet-class>servlet.webLoginServlet</servlet-class>
+    <servlet-class>servlet.web.login.webLoginServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>beforeAddServlet</servlet-name>
-    <servlet-class>servlet.beforeAddServlet</servlet-class>
+    <servlet-class>servlet.admin.custom.beforeAddServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>webSearchServlet</servlet-name>
-    <servlet-class>servlet.webSearchServlet</servlet-class>
+    <servlet-class>servlet.web.custom.webSearchServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>webApplySaveServlet</servlet-name>
-    <servlet-class>servlet.webApplySaveServlet</servlet-class>
+    <servlet-class>servlet.web.apply.webApplySaveServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>userManageServlet</servlet-name>
-    <servlet-class>servlet.userManageServlet</servlet-class>
+    <servlet-class>servlet.admin.user.userManageServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>editServlet</servlet-name>
-    <servlet-class>servlet.editServlet</servlet-class>
+    <servlet-class>servlet.admin.custom.editServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>editUpdateServlet</servlet-name>
-    <servlet-class>servlet.editUpdateServlet</servlet-class>
+    <servlet-class>servlet.admin.custom.editUpdateServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>approveServlet</servlet-name>
-    <servlet-class>servlet.approveServlet</servlet-class>
+    <servlet-class>servlet.admin.approve.approveServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>approveUpdateServlet</servlet-name>
-    <servlet-class>servlet.approveUpdateServlet</servlet-class>
+    <servlet-class>servlet.admin.approve.approveUpdateServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>webMessageServlet</servlet-name>
-    <servlet-class>servlet.webMessageServlet</servlet-class>
+    <servlet-class>servlet.web.message.webMessageServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>loginServlet</servlet-name>
-    <servlet-class>servlet.loginServlet</servlet-class>
+    <servlet-class>servlet.admin.login.loginServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>toLoginServlet</servlet-name>
-    <servlet-class>servlet.toLoginServlet</servlet-class>
+    <servlet-class>servlet.admin.login.toLoginServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>logoutServlet</servlet-name>
-    <servlet-class>servlet.logoutServlet</servlet-class>
+    <servlet-class>servlet.web.login.logoutServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>toApproveServlet</servlet-name>
-    <servlet-class>servlet.toApproveServlet</servlet-class>
+    <servlet-class>servlet.admin.approve.toApproveServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>adminLogoutServlet</servlet-name>
-    <servlet-class>servlet.adminLogoutServlet</servlet-class>
+    <servlet-class>servlet.admin.login.adminLogoutServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>resetPassServlet</servlet-name>
-    <servlet-class>servlet.resetPassServlet</servlet-class>
+    <servlet-class>servlet.admin.user.resetPassServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
-    <servlet-name>testServlet</servlet-name>
-    <servlet-class>servlet.testServlet</servlet-class>
+    <servlet-name>toWebLoginServlet</servlet-name>
+    <servlet-class>servlet.web.login.toWebLoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>toWebRegisterServlet</servlet-name>
+    <servlet-class>servlet.web.register.toWebRegisterServlet</servlet-class>
   </servlet>
 
 
@@ -186,14 +180,7 @@
 
 
 
-  <servlet-mapping>
-    <servlet-name>festivalServlet</servlet-name>
-    <url-pattern>/festivalServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>custom</servlet-name>
-    <url-pattern>/custom</url-pattern>
-  </servlet-mapping>
+
   <servlet-mapping>
     <servlet-name>addServlet</servlet-name>
     <url-pattern>/addServlet</url-pattern>
@@ -287,8 +274,12 @@
     <url-pattern>/resetPassServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>testServlet</servlet-name>
-    <url-pattern>/testServlet</url-pattern>
+    <servlet-name>toWebLoginServlet</servlet-name>
+    <url-pattern>/toWebLoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>toWebRegisterServlet</servlet-name>
+    <url-pattern>/toWebRegisterServlet</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
@@ -345,6 +336,17 @@
   <filter-mapping>
   	<filter-name>AuthorityFilter</filter-name>
 	<url-pattern>/resetPassServlet</url-pattern>	
+  </filter-mapping>
+  
+  
+  <filter>
+  	<filter-name>loginFilter</filter-name>
+  	<filter-class>filter.loginFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>loginFilter</filter-name>
+  	<url-pattern>/webApplyServlet</url-pattern>
   </filter-mapping>
   
 </web-app>

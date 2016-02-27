@@ -6,6 +6,11 @@ import java.sql.DriverManager;
 public class DbConn {
 	private Connection conn;
 	
+	/**
+	 * 数据库加载驱动
+	 * @return
+	 * 		连接
+	 */
 	public Connection getConn(){
 		try {
 			Class.forName("com.mysql.jdbc.Driver");

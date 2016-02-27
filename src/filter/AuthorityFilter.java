@@ -19,13 +19,13 @@ public class AuthorityFilter implements Filter{
 	}
 
 	public void doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain chain) throws IOException, ServletException {
-		HttpServletRequest request = (HttpServletRequest)arg0;
-		HttpServletResponse response = (HttpServletResponse)arg1;
-		//判断权限
+		HttpServletRequest request = (HttpServletRequest) arg0;
+		HttpServletResponse response = (HttpServletResponse) arg1;
+		//判断权限（查询是否是后台账号在登录，若不是，则没有访问的权限）
 		HttpSession session = request.getSession();
-		String adminLogname = (String)session.getAttribute("adminLogname");
+		String adminLogname = (String) session.getAttribute("adminLogname");
 		if(adminLogname == null){
-			response.sendError(401,"对不起，您没有访问的权限~^_^"); 
+			response.sendError(401, "对不起，您没有访问的权限~^_^"); 
 		}else{
 			chain.doFilter(request, response);//放行
 		}
